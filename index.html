@@ -1136,6 +1136,21 @@
               <span class="cf-err" id="cfErrWa"></span>
             </div>
 
+            <!-- Email -->
+            <div class="cf-field">
+              <label class="cf-label" for="cfEmail"
+                >Email <span class="cf-req">*</span></label
+              >
+              <input
+                type="email"
+                id="cfEmail"
+                name="cfEmail"
+                placeholder="Enter your email"
+                autocomplete="email"
+              />
+              <span class="cf-err" id="cfErrEmail"></span>
+            </div>
+
             <!-- Project Type -->
             <div class="cf-field">
               <label class="cf-label" for="cfType"
@@ -1182,9 +1197,16 @@
               <span class="cf-err" id="cfErrDesc"></span>
             </div>
 
-            <button type="button" class="cf-submit" id="btnDiscuss">
-              &#128172; Discuss on WhatsApp
-            </button>
+            <div class="cf-actions">
+              <button type="button" class="cf-submit" id="btnDiscuss">
+                &#128172; Discuss on WhatsApp
+              </button>
+              <a
+                href="mailto:vedanshvisuals07@gmail.com?subject=Project%20Inquiry%20-%20Vedansh%20Visuals"
+                class="cf-submit cf-submit--email"
+                >&#9993; Email Us</a
+              >
+            </div>
             <p class="form-msg" id="formMsg"></p>
           </form>
         </div>

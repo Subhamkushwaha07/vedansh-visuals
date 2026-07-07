@@ -395,7 +395,7 @@ revealEls.forEach(el => revealObserver.observe(el));
 /* ---------- 5. Contact form — WhatsApp redirect ---------- */
 (function () {
 
-  const OWNER_WA = '918101958153'; /* E.164, no + sign */
+  const OWNER_WA = '918900096212'; /* E.164, no + sign */
 
   const formMsg = document.getElementById('formMsg');
   const btn     = document.getElementById('btnDiscuss');
@@ -403,15 +403,17 @@ revealEls.forEach(el => revealObserver.observe(el));
   /* Field refs */
   const fName   = document.getElementById('cfName');
   const fWa     = document.getElementById('cfWa');
+  const fEmail  = document.getElementById('cfEmail');
   const fType   = document.getElementById('cfType');
   const fBudget = document.getElementById('cfBudget');
   const fDesc   = document.getElementById('cfDesc');
 
   /* Error span refs */
-  const eName = document.getElementById('cfErrName');
-  const eWa   = document.getElementById('cfErrWa');
-  const eType = document.getElementById('cfErrType');
-  const eDesc = document.getElementById('cfErrDesc');
+  const eName  = document.getElementById('cfErrName');
+  const eWa    = document.getElementById('cfErrWa');
+  const eEmail = document.getElementById('cfErrEmail');
+  const eType  = document.getElementById('cfErrType');
+  const eDesc  = document.getElementById('cfErrDesc');
 
   function showMsg(text, color) {
     formMsg.style.color = color;
@@ -427,23 +429,27 @@ revealEls.forEach(el => revealObserver.observe(el));
   }
 
   /* Live-clear errors on input */
-  [[fName, eName], [fWa, eWa], [fType, eType], [fDesc, eDesc]].forEach(([el, err]) => {
+  [[fName, eName], [fWa, eWa], [fEmail, eEmail], [fType, eType], [fDesc, eDesc]].forEach(([el, err]) => {
     el.addEventListener('input', () => setErr(err, el, ''));
   });
 
   btn.addEventListener('click', () => {
     const name   = fName.value.trim();
     const wa     = fWa.value.trim();
+    const email  = fEmail.value.trim();
     const type   = fType.value;
     const budget = fBudget.value.trim();
     const desc   = fDesc.value.trim();
 
     /* Validate */
     let valid = true;
-    if (!name)  { setErr(eName, fName, 'Please enter your full name.');          valid = false; }
-    if (!wa)    { setErr(eWa,   fWa,   'Please enter your WhatsApp number.');     valid = false; }
-    if (!type)  { setErr(eType, fType, 'Please select a project type.');          valid = false; }
-    if (!desc)  { setErr(eDesc, fDesc, 'Please describe your project.');          valid = false; }
+    if (!name)  { setErr(eName,  fName,  'Please enter your full name.');          valid = false; }
+    if (!wa)    { setErr(eWa,    fWa,    'Please enter your WhatsApp number.');     valid = false; }
+    if (!email) { setErr(eEmail, fEmail, 'Please enter your email address.');       valid = false; }
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                  setErr(eEmail, fEmail, 'Please enter a valid email address.');     valid = false; }
+    if (!type)  { setErr(eType,  fType,  'Please select a project type.');          valid = false; }
+    if (!desc)  { setErr(eDesc,  fDesc,  'Please describe your project.');          valid = false; }
     if (!valid) {
       /* Scroll to first error */
       const first = document.querySelector('#contactForm .cf-err:not(:empty)');
@@ -456,6 +462,7 @@ revealEls.forEach(el => revealObserver.observe(el));
       `Hello Vedansh! I found you on your portfolio website and would like to discuss a project.\n\n` +
       `*Name:* ${name}\n` +
       `*WhatsApp:* ${wa}\n` +
+      `*Email:* ${email}\n` +
       `*Project Type:* ${type}\n` +
       (budget ? `*Budget:* ${budget}\n` : '') +
       `\n*Project Details:*\n${desc}`;
@@ -479,7 +486,7 @@ revealEls.forEach(el => revealObserver.observe(el));
    ===================================================== */
 (function () {
 
-  const OWNER_WA = '918101958153'; /* E.164, no + sign — owner's fixed number */
+  const OWNER_WA = '918900096212'; /* E.164, no + sign — owner's fixed number */
 
   document.querySelectorAll('.pc-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -542,6 +549,10 @@ revealEls.forEach(el => revealObserver.observe(el));
   const heroBg   = document.querySelector('.hero-bg');
   const heroSec  = document.getElementById('home');
   if (!heroBg || !heroSec) return;
+
+  /* Set initial transform immediately — prevents the 8s CSS transition
+     from firing on first paint and avoids a blank/oversized frame */
+  heroBg.style.transform = 'scale(1.05) translateY(0px)';
 
   /* Honour reduced-motion preference */
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

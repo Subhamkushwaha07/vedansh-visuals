@@ -310,6 +310,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero {
   position: relative;
   height: 100vh;
+  height: 100dvh;
   min-height: 600px;
   display: flex;
   align-items: center;
@@ -323,9 +324,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   height: 100%;
   object-fit: cover;
   transform: scale(1.05);
+}
+.hero:hover .hero-bg {
+  transform: scale(1);
   transition: transform 8s ease;
 }
-.hero:hover .hero-bg { transform: scale(1); }
 
 .hero-overlay {
   position: absolute;
@@ -1547,6 +1550,30 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cf-submit:hover::before { left: 150%; }
 .cf-submit:active { transform: translateY(-1px); }
 
+.cf-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.cf-actions .cf-submit { flex: 1; min-width: 160px; text-align: center; }
+
+.cf-submit--email {
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cf-submit--email::before { display: none; }
+.cf-submit--email:hover {
+  background: var(--gold);
+  color: #0a0a0a;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(201,168,76,.4);
+}
+
 /* Status message */
 .form-msg {
   font-size: 0.8rem;
@@ -1818,7 +1845,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-toggle { display: flex; }
   .nav-links {
     position: fixed;
-    top: 0; right: -100%;
+    top: 0; right: 0;
     width: 75%; height: 100vh;
     flex-direction: column;
     justify-content: center;
@@ -1829,10 +1856,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     border-left: 1px solid rgba(201,168,76,.1);
     padding: 80px 48px;
     gap: 32px;
-    transition: right 0.55s cubic-bezier(.4,0,.2,1);
+    transform: translateX(100%);
+    transition: transform 0.55s cubic-bezier(.4,0,.2,1);
     z-index: 999;
   }
-  .nav-links.open { right: 0; }
+  .nav-links.open { transform: translateX(0); }
   .nav-link { font-size: 1rem; }
 
   /* Services */
@@ -2886,7 +2914,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── HERO ────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .hero          { min-height: 100svh; }   /* safe viewport on mobile browsers */
+  .hero          { min-height: 100dvh; height: 100dvh; }   /* dynamic viewport on mobile browsers */
   .hero-content  { padding: 0 24px; max-width: 100%; }
   .hero-sub      { letter-spacing: 2px; font-size: 0.65rem; }
   .hero-tagline  { letter-spacing: 3px; }
@@ -3036,6 +3064,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .contact-form textarea,
   .contact-form select    { padding: 12px 14px; font-size: 0.84rem; }
   .cf-submit              { padding: 14px 20px; font-size: 0.78rem; }
+  .cf-actions             { flex-direction: column; }
   .csc                    { padding: 20px 16px; }
   .csc-title              { font-size: 1rem; }
   .csc-list li            { font-size: 0.8rem; }
