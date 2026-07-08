@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://vedanshvisuals.com/sitemap.xml
+Sitemap: https://vedansh-visuals.netlify.app/sitemap.xml

@@ -26,6 +26,16 @@
 
 html { scroll-behavior: smooth; font-size: 16px; }
 
+/* Force font-display:swap for all Google Fonts to prevent invisible text (FOIT) */
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-display: swap;
+}
+
 body {
   font-family: var(--font-sans);
   background: var(--black);
@@ -34,9 +44,11 @@ body {
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent layout shifts from scrollbar appearing */
+  scrollbar-gutter: stable;
 }
 
-img { display: block; max-width: 100%; height: auto; }
+img { display: block; max-width: 100%; height: auto; contain: layout; }
 a  { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
@@ -807,6 +819,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 0;
   transform: translateY(48px);
   will-change: opacity, transform;
+  /* Contain layout to prevent reflow propagation */
+  contain: layout style;
 }
 .service-card.sc-visible {
   opacity: 1;
@@ -1065,6 +1079,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 0;
   transform: translateY(44px) scale(0.97);
   will-change: opacity, transform;
+  contain: layout style;
 }
 .gallery-item.gi-visible {
   opacity: 1;
@@ -2319,6 +2334,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     transform    0.55s cubic-bezier(.22,.68,0,1.05),
     border-color 0.55s ease,
     box-shadow   0.55s ease;
+  contain: layout style;
 }
 .pc.pc-visible {
   opacity: 1;
@@ -2664,6 +2680,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* JS writes --hero-parallax via inline style on .hero-bg    */
 .hero-bg {
   will-change: transform;
+  /* Promote to own compositor layer only during active parallax */
 }
 
 /* ---- Scroll indicator refinement ---- */
@@ -2688,8 +2705,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   100% { opacity: 0;  transform: scale(1.35); }
 }
 
-/* Respect prefers-reduced-motion */
+/* Respect prefers-reduced-motion — disable ALL non-essential animations */
 @media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
   .hero-anim-tagline,
   .hero-anim-title,
   .hero-anim-sub,
@@ -2699,6 +2722,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     animation: none;
   }
   .scroll-down::before { animation: none; }
+  .hero-bg { will-change: auto; }
+  .service-card, .gallery-item, .pc { will-change: auto; }
 }
 
 /* =====================================================
