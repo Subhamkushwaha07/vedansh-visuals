@@ -395,7 +395,7 @@ revealEls.forEach(el => revealObserver.observe(el));
 /* ---------- 5. Contact form — WhatsApp redirect ---------- */
 (function () {
 
-  const OWNER_WA = '918900096212'; /* E.164, no + sign */
+  const OWNER_WA = '918710005016'; /* E.164, no + sign */
 
   const formMsg = document.getElementById('formMsg');
   const btn     = document.getElementById('btnDiscuss');
@@ -486,7 +486,7 @@ revealEls.forEach(el => revealObserver.observe(el));
    ===================================================== */
 (function () {
 
-  const OWNER_WA = '918900096212'; /* E.164, no + sign — owner's fixed number */
+  const OWNER_WA = '918710005016'; /* E.164, no + sign — owner's fixed number */
 
   document.querySelectorAll('.pc-btn').forEach(btn => {
     btn.addEventListener('click', () => {
