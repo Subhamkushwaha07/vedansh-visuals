@@ -240,6 +240,7 @@
 
     <!-- ===== Step 3: Critical CSS (render-blocking, intentional) ===== -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reviews.css" />
 
     <!-- ===== Step 4: Google Analytics 4 (non-blocking) ===== -->
     <script
@@ -379,6 +380,7 @@
           <li><a href="#services" class="nav-link">Services</a></li>
           <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
           <li><a href="#gallery" class="nav-link">Pricing</a></li>
+          <li><a href="#reviews" class="nav-link">Reviews</a></li>
           <li>
             <a href="#contact" class="nav-link nav-cta"
               >Contact<span class="cta-shine"></span
@@ -1538,6 +1540,127 @@
       </section>
     </main>
 
+      <!-- ===== CLIENT REVIEWS ===== -->
+      <section
+        class="reviews section"
+        id="reviews"
+        aria-labelledby="reviews-heading"
+        style="content-visibility: auto; contain-intrinsic-size: 0 900px"
+      >
+        <div class="container">
+          <p class="section-label center">Kind Words</p>
+          <h2 class="section-title center" id="reviews-heading">
+            Client Reviews
+          </h2>
+          <p class="rv-intro">
+            Real experiences from real clients across Durgapur, Asansol &amp;
+            West Bengal. Share yours below.
+          </p>
+
+          <div class="rv-layout">
+
+            <!-- ── Left: Submit form ── -->
+            <div class="rv-form-wrap">
+              <h3 class="rv-form-title">Leave a Review</h3>
+              <p class="rv-form-sub">Your feedback means the world. Takes 30 seconds.</p>
+
+              <form id="reviewForm" novalidate aria-label="Submit a client review">
+
+                <!-- Full Name -->
+                <div class="rv-field">
+                  <label class="rv-label" for="rvName">
+                    Full Name <span class="rv-req">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="rvName"
+                    name="rvName"
+                    placeholder="Your full name"
+                    autocomplete="name"
+                  />
+                  <span class="rv-err" id="rvErrName"></span>
+                </div>
+
+                <!-- Location -->
+                <div class="rv-field">
+                  <label class="rv-label" for="rvLocation">
+                    Location (City, State) <span class="rv-req">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="rvLocation"
+                    name="rvLocation"
+                    placeholder="e.g. Durgapur, West Bengal"
+                    autocomplete="address-level2"
+                  />
+                  <span class="rv-err" id="rvErrLocation"></span>
+                </div>
+
+                <!-- Star Rating -->
+                <div class="rv-field">
+                  <label class="rv-label">
+                    Rating <span class="rv-req">*</span>
+                  </label>
+                  <div class="rv-stars-input" role="group" aria-label="Star rating">
+                    <span class="rv-star" data-value="1" role="button" tabindex="0" aria-pressed="false" aria-label="1 star">&#9733;</span>
+                    <span class="rv-star" data-value="2" role="button" tabindex="0" aria-pressed="false" aria-label="2 stars">&#9733;</span>
+                    <span class="rv-star" data-value="3" role="button" tabindex="0" aria-pressed="false" aria-label="3 stars">&#9733;</span>
+                    <span class="rv-star" data-value="4" role="button" tabindex="0" aria-pressed="false" aria-label="4 stars">&#9733;</span>
+                    <span class="rv-star" data-value="5" role="button" tabindex="0" aria-pressed="false" aria-label="5 stars">&#9733;</span>
+                  </div>
+                  <span class="rv-err" id="rvErrRating"></span>
+                </div>
+
+                <!-- Review Message -->
+                <div class="rv-field">
+                  <label class="rv-label" for="rvMsg">
+                    Your Review <span class="rv-req">*</span>
+                  </label>
+                  <textarea
+                    id="rvMsg"
+                    name="rvMsg"
+                    rows="5"
+                    placeholder="Share your experience working with Vedansh Visuals…"
+                  ></textarea>
+                  <span class="rv-err" id="rvErrMsg"></span>
+                </div>
+
+                <button type="submit" class="rv-submit-btn" id="rvSubmitBtn">
+                  Submit Review
+                </button>
+                <p class="rv-form-msg" id="rvFormMsg" aria-live="polite" aria-atomic="true"></p>
+
+              </form>
+            </div>
+            <!-- /rv-form-wrap -->
+
+            <!-- ── Right: Reviews display ── -->
+            <div>
+              <div class="rv-display-header">
+                <p class="rv-display-title">What Clients Say</p>
+              </div>
+
+              <div id="rvGrid" class="rv-grid">
+                <!-- Loader -->
+                <div id="rvLoader" class="rv-loader" style="grid-column:1/-1">
+                  <span class="rv-spinner"></span>
+                  Loading reviews…
+                </div>
+                <!-- Empty state -->
+                <div id="rvEmpty" class="rv-empty" style="grid-column:1/-1; display:none">
+                  <span class="rv-empty-icon">&#9733;</span>
+                  No reviews yet. Be the first to share your experience!
+                </div>
+              </div>
+            </div>
+            <!-- /reviews display -->
+
+          </div>
+          <!-- /rv-layout -->
+        </div>
+      </section>
+      <!-- /CLIENT REVIEWS -->
+
     <!-- ===== FOOTER ===== -->
     <footer class="footer" id="footer" aria-labelledby="footer-brand">
       <div class="container">
@@ -1613,6 +1736,7 @@
               <li><a href="#services">My Services</a></li>
               <li><a href="#portfolio">Portfolio</a></li>
               <li><a href="#gallery">Pricing Plans</a></li>
+              <li><a href="#reviews">Client Reviews</a></li>
               <li><a href="#contact">Let&#39;s Discuss Your Project</a></li>
             </ul>
           </div>
@@ -1684,6 +1808,11 @@
     <!-- ===== BACK TO TOP ===== -->
     <button class="btt" id="bttBtn" aria-label="Back to top">&#8679;</button>
 
+    <!-- ===== Firebase SDK (compat) ===== -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="reviews.js" defer></script>
     <script src="script.js" defer></script>
   </body>
 </html>
