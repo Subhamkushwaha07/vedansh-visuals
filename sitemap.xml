@@ -1,48 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Homepage (all sections are anchor-based on a single page) -->
+  <!-- ===== Homepage ===== -->
   <url>
     <loc>https://vedansh-visuals.netlify.app/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <!-- Hero image -->
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1920&amp;auto=format&amp;fit=crop&amp;q=80</image:loc>
+      <image:title>Cinematic Wedding Videography by Vedansh Visuals, West Bengal</image:title>
+      <image:caption>Vedansh Visuals — Wedding Photography &amp; Cinematography in Durgapur, West Bengal</image:caption>
+    </image:image>
+    <!-- About image -->
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/About_yjnuqw.png</image:loc>
+      <image:title>Vedansh Visuals — Professional Cinematographer &amp; Video Editor, West Bengal</image:title>
+      <image:caption>Professional video editing and cinematography workspace — Vedansh Visuals</image:caption>
+    </image:image>
+    <!-- Portfolio images -->
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Cinematic_1_rqtbex.jpg</image:loc>
+      <image:title>Cinematic Portrait Photography — Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Cinematic_2_nan5mu.jpg</image:loc>
+      <image:title>Cinematic Story 02 — Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Cinematic_3_mlewnn.jpg</image:loc>
+      <image:title>Cinematic Story 03 — Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Travel_1_alws1j.jpg</image:loc>
+      <image:title>Travel Photography — India Destinations by Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Travel_2_pkse6w.jpg</image:loc>
+      <image:title>Travel Photography Story 02 — Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Travel_3_f0p36h.jpg</image:loc>
+      <image:title>Travel Photography Story 03 — Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Travel_4_vtrscu.jpg</image:loc>
+      <image:title>Travel Photography Story 04 — Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Birthday_tqcwat.jpg</image:loc>
+      <image:title>Birthday Celebration Photography — Vedansh Visuals, West Bengal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Insta_post_hypdnw.jpg</image:loc>
+      <image:title>Instagram Social Media Content — Vedansh Visuals</image:title>
+    </image:image>
+    <!-- Service images -->
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/wedding_rhuj6i.jpg</image:loc>
+      <image:title>Wedding &amp; Pre-Wedding Photography Service — Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Cinematic_Video_eyvlsu.jpg</image:loc>
+      <image:title>Cinematic Video Recording &amp; Editing Service — Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Travel_sjuyjs.jpg</image:loc>
+      <image:title>Travel Reels &amp; Video Editing Service — Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Birthday_psxkx9.jpg</image:loc>
+      <image:title>Birthday Shoot &amp; Video Editing Service — Vedansh Visuals</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ovb0un2m/image/upload/Social_Media_Content_tvueo0.jpg</image:loc>
+      <image:title>Social Media Content Creation — Vedansh Visuals</image:title>
+    </image:image>
   </url>
 
-  <!-- Section anchors — helps search engines understand page structure -->
-  <url>
-    <loc>https://vedansh-visuals.netlify.app/#about</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://vedansh-visuals.netlify.app/#services</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://vedansh-visuals.netlify.app/#portfolio</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://vedansh-visuals.netlify.app/#gallery</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vedansh-visuals.netlify.app/#contact</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <!-- ===== 404 page (noindex — excluded intentionally) ===== -->
+  <!-- 404.html is marked noindex, correctly excluded from sitemap -->
 
 </urlset>

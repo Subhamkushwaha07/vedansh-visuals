@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+﻿<!doctype html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,8 +17,13 @@
     <meta name="author" content="Vedansh Visuals" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#c9a84c" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="rating" content="general" />
+    <meta name="revisit-after" content="7 days" />
     <meta name="geo.region" content="IN-WB" />
-    <meta name="geo.placename" content="West Bengal, India" />
+    <meta name="geo.placename" content="Durgapur, West Bengal, India" />
+    <meta name="geo.position" content="23.5204;87.3119" />
+    <meta name="ICBM" content="23.5204, 87.3119" />
     <link rel="canonical" href="https://vedansh-visuals.netlify.app/" />
     <meta
       name="google-site-verification"
@@ -75,21 +80,38 @@
         "@context": "https://schema.org",
         "@type": ["LocalBusiness", "PhotographyStudio"],
         "name": "Vedansh Visuals",
-        "description": "Professional wedding photography, cinematography and video editing services in Asansol, Durgapur, Kolkata and West Bengal, India.",
+        "alternateName": "Vedansh Visuals Photography",
+        "description": "Vedansh Visuals offers Wedding & Pre-Wedding Photography, Cinematic Video Recording & Editing, Travel Reels, Birthday Shoots and Social Media Content Creation in Durgapur, West Bengal.",
         "url": "https://vedansh-visuals.netlify.app/",
-        "logo": "https://res.cloudinary.com/ovb0un2m/image/upload/About_yjnuqw.png",
-        "image": "https://res.cloudinary.com/ovb0un2m/image/upload/About_yjnuqw.png",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://res.cloudinary.com/ovb0un2m/image/upload/Birthday_Logo_iqjkxl.jpg",
+          "width": 512,
+          "height": 512
+        },
+        "image": [
+          "https://res.cloudinary.com/ovb0un2m/image/upload/About_yjnuqw.png",
+          "https://res.cloudinary.com/ovb0un2m/image/upload/wedding_rhuj6i.jpg",
+          "https://res.cloudinary.com/ovb0un2m/image/upload/Cinematic_Video_eyvlsu.jpg"
+        ],
         "telephone": "+918710005016",
         "email": "vedanshvisuals07@gmail.com",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Asansol",
+          "addressLocality": "Durgapur",
           "addressRegion": "West Bengal",
+          "postalCode": "713201",
           "addressCountry": "IN"
         },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 23.5204,
+          "longitude": 87.3119
+        },
+        "hasMap": "https://maps.google.com/?q=Durgapur,West+Bengal,India",
         "areaServed": [
-          { "@type": "City", "name": "Asansol" },
           { "@type": "City", "name": "Durgapur" },
+          { "@type": "City", "name": "Asansol" },
           { "@type": "City", "name": "Kolkata" },
           { "@type": "State", "name": "West Bengal" },
           { "@type": "Country", "name": "India" }
@@ -98,8 +120,17 @@
           "https://www.instagram.com/vedansh.visuals",
           "https://www.facebook.com/profile.php?id=61591354427616"
         ],
-        "openingHours": "Mo-Su 09:00-21:00",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "09:00",
+            "closes": "21:00"
+          }
+        ],
         "priceRange": "\u20b9999 - Custom",
+        "currenciesAccepted": "INR",
+        "paymentAccepted": "Cash, UPI, Bank Transfer",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Photography & Videography Services",
@@ -108,35 +139,60 @@
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Wedding & Pre-Wedding Photography"
+                "name": "Wedding & Pre-Wedding Photography",
+                "description": "Full-day wedding coverage with cinematic highlight film and high-resolution photos in Durgapur, Asansol & West Bengal."
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Cinematic Video Recording & Editing"
+                "name": "Cinematic Video Recording & Editing",
+                "description": "Professional on-location video recording with cinematic color grading, sound design and smooth transitions. Starting from \u20b91,999."
+              },
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "1999",
+                "priceCurrency": "INR"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Travel Reels & Video Editing"
+                "name": "Travel Reels & Video Editing",
+                "description": "Dynamic travel reels for Instagram Reels, YouTube Shorts and destination storytelling. Starting from \u20b9999."
+              },
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "999",
+                "priceCurrency": "INR"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Birthday Shoot & Video Editing"
+                "name": "Birthday Shoot & Video Editing",
+                "description": "Birthday photography and highlight videos in Durgapur, Asansol & West Bengal. Starting from \u20b91,499."
+              },
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "1499",
+                "priceCurrency": "INR"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Social Media Content Creation"
+                "name": "Social Media Content Creation",
+                "description": "Instagram Reels, YouTube Shorts, and promotional videos for creators and businesses. Starting from \u20b91,499."
+              },
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "1499",
+                "priceCurrency": "INR"
               }
             }
           ]
@@ -255,6 +311,45 @@
       gtag("js", new Date());
       gtag("config", "G-HWZJE19Y1Q", { send_page_view: true });
     </script>
+
+    <!-- ===== Photographer / Person Schema ===== -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Aman Shaw",
+        "jobTitle": "Cinematographer & Video Editor",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Vedansh Visuals"
+        },
+        "url": "https://vedansh-visuals.netlify.app/",
+        "image": "https://res.cloudinary.com/ovb0un2m/image/upload/About_yjnuqw.png",
+        "email": "vedanshvisuals07@gmail.com",
+        "telephone": "+918710005016",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Durgapur",
+          "addressRegion": "West Bengal",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://www.instagram.com/vedansh.visuals",
+          "https://www.facebook.com/profile.php?id=61591354427616"
+        ],
+        "knowsAbout": [
+          "Wedding Photography",
+          "Pre-Wedding Photography",
+          "Cinematic Video Recording",
+          "Video Editing",
+          "Travel Reels",
+          "Birthday Photography",
+          "Social Media Content Creation",
+          "Color Grading",
+          "Cinematography"
+        ]
+      }
+    </script>
     <!-- ===== FAQ Schema ===== -->
     <script type="application/ld+json">
       {
@@ -344,6 +439,12 @@
           {
             "@type": "ListItem",
             "position": 6,
+            "name": "Client Reviews",
+            "item": "https://vedansh-visuals.netlify.app/#reviews"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
             "name": "Contact",
             "item": "https://vedansh-visuals.netlify.app/#contact"
           }
@@ -557,8 +658,6 @@
                   <h4 class="team-role">Video Editors</h4>
                   <div class="team-names">
                     <span>Aman Shaw</span>
-                    <span class="team-divider" aria-hidden="true"></span>
-                    <span>Raj</span>
                   </div>
                 </article>
 
@@ -804,7 +903,7 @@
             >
               <img
                 src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&auto=format&fit=crop&q=75"
-                alt="Wedding ceremony photography by Vedansh Visuals, West Bengal"
+                alt="Indian wedding ceremony photography — bride and groom captured by Vedansh Visuals, West Bengal"
                 width="800"
                 height="600"
                 loading="lazy"
@@ -825,7 +924,7 @@
             >
               <img
                 src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=75"
-                alt="Pre-wedding film and photography by Vedansh Visuals"
+                alt="Romantic pre-wedding film and photography session by Vedansh Visuals, West Bengal"
                 width="800"
                 height="600"
                 loading="lazy"
@@ -843,7 +942,7 @@
               class="gallery-item"
               data-category="cinematic"
               data-type="image"
-              data-title="Cinematic Story &#8211; 01"
+              data-title="Victoria Memorial, Kolkata"
             >
               <img
                 src="https://res.cloudinary.com/ovb0un2m/image/upload/Cinematic_1_rqtbex.jpg"
@@ -854,7 +953,7 @@
                 decoding="async"
               />
               <div class="gallery-overlay">
-                <span>Cinematic</span
+                <span>Victoria Memorial, Kolkata</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
             </div>
@@ -863,7 +962,7 @@
               class="gallery-item"
               data-category="cinematic"
               data-type="image"
-              data-title="Cinematic Story &#8211; 02"
+              data-title="Victoria Memorial, Kolkata"
             >
               <img
                 src="https://res.cloudinary.com/ovb0un2m/image/upload/Cinematic_2_nan5mu.jpg"
@@ -874,7 +973,7 @@
                 decoding="async"
               />
               <div class="gallery-overlay">
-                <span>Cinematic</span
+                <span>Victoria Memorial, Kolkata</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
             </div>
@@ -883,7 +982,7 @@
               class="gallery-item"
               data-category="cinematic"
               data-type="image"
-              data-title="Cinematic Story &#8211; 03"
+              data-title="Charbagh Railway Station, Lucknow"
             >
               <img
                 src="https://res.cloudinary.com/ovb0un2m/image/upload/Cinematic_3_mlewnn.jpg"
@@ -894,7 +993,7 @@
                 decoding="async"
               />
               <div class="gallery-overlay">
-                <span>Cinematic</span
+                <span>Charbagh Railway Station, Lucknow</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
             </div>
@@ -904,7 +1003,7 @@
               class="gallery-item"
               data-category="cinematic"
               data-type="video"
-              data-title="Cinematic Edit"
+              data-title="Kolkata ❤"
               data-video="https://player.cloudinary.com/embed/?cloud_name=ovb0un2m&public_id=Kolkata&autoplay=true&muted=true&loop=true&playsinline=true"
             >
               <video
@@ -915,7 +1014,7 @@
                 playsinline
               ></video>
               <div class="gallery-overlay">
-                <span>Cinematic</span
+                <span>Kolkata ❤</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
               <div class="play-btn" aria-label="Play video">&#9654;</div>
@@ -926,7 +1025,7 @@
               class="gallery-item"
               data-category="travel"
               data-type="video"
-              data-title="Travel Reel — Puri"
+              data-title="Puri ❤"
               data-video="https://player.cloudinary.com/embed/?cloud_name=ovb0un2m&public_id=puri&autoplay=true&muted=true&loop=true&playsinline=true"
             >
               <video
@@ -937,7 +1036,7 @@
                 playsinline
               ></video>
               <div class="gallery-overlay">
-                <span>Travel</span><span class="gi-view-btn">View Project</span>
+                <span>Puri ❤</span><span class="gi-view-btn">View Project</span>
               </div>
               <div class="play-btn" aria-label="Play video">&#9654;</div>
             </div>
@@ -947,7 +1046,7 @@
               class="gallery-item"
               data-category="travel"
               data-type="image"
-              data-title="Travel Story &#8211; 01"
+              data-title="Puri Beach"
             >
               <img
                 src="https://res.cloudinary.com/ovb0un2m/image/upload/Travel_1_alws1j.jpg"
@@ -958,7 +1057,7 @@
                 decoding="async"
               />
               <div class="gallery-overlay">
-                <span>Travel Photography</span
+                <span>Puri Beach</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
             </div>
@@ -967,7 +1066,7 @@
               class="gallery-item"
               data-category="travel"
               data-type="image"
-              data-title="Travel Story &#8211; 02"
+              data-title="Golden Beach, Puri"
             >
               <img
                 src="https://res.cloudinary.com/ovb0un2m/image/upload/Travel_2_pkse6w.jpg"
@@ -978,7 +1077,7 @@
                 decoding="async"
               />
               <div class="gallery-overlay">
-                <span>Travel Photography</span
+                <span>Golden Beach, Puri</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
             </div>
@@ -987,7 +1086,7 @@
               class="gallery-item"
               data-category="travel"
               data-type="image"
-              data-title="Travel Story &#8211; 03"
+              data-title="Kashmir, India 🍁"
             >
               <img
                 src="https://res.cloudinary.com/ovb0un2m/image/upload/Travel_3_f0p36h.jpg"
@@ -998,7 +1097,7 @@
                 decoding="async"
               />
               <div class="gallery-overlay">
-                <span>Travel Photography</span
+                <span>Kashmir, India 🍁</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
             </div>
@@ -1007,7 +1106,7 @@
               class="gallery-item"
               data-category="travel"
               data-type="image"
-              data-title="Travel Story &#8211; 04"
+              data-title="Kashmir Chronicles ⭐"
             >
               <img
                 src="https://res.cloudinary.com/ovb0un2m/image/upload/Travel_4_vtrscu.jpg"
@@ -1018,7 +1117,7 @@
                 decoding="async"
               />
               <div class="gallery-overlay">
-                <span>Travel Photography</span
+                <span>Kashmir Chronicles ⭐</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
             </div>
@@ -1039,7 +1138,7 @@
                 decoding="async"
               />
               <div class="gallery-overlay">
-                <span>Birthday</span
+                <span>Birthday Cake</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
             </div>
@@ -1053,7 +1152,7 @@
             >
               <img
                 src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&auto=format&fit=crop&q=75"
-                alt="Birthday highlight reel video by Vedansh Visuals"
+                alt="Birthday celebration highlight reel video production by Vedansh Visuals, West Bengal"
                 width="800"
                 height="600"
                 loading="lazy"
@@ -1082,7 +1181,7 @@
                 decoding="async"
               />
               <div class="gallery-overlay">
-                <span>Social Media</span
+                <span>Sri Harmandir Sahib</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
             </div>
@@ -1091,7 +1190,7 @@
               class="gallery-item"
               data-category="reels"
               data-type="video"
-              data-title="Social Media Content"
+              data-title="Peaceful Kashmir 🗻"
               data-video="https://player.cloudinary.com/embed/?cloud_name=ovb0un2m&public_id=Reel&autoplay=true&muted=true&loop=true&playsinline=true"
             >
               <video
@@ -1102,7 +1201,68 @@
                 playsinline
               ></video>
               <div class="gallery-overlay">
-                <span>Social Media</span
+                <span>Peaceful Kashmir 🗻</span
+                ><span class="gi-view-btn">View Project</span>
+              </div>
+              <div class="play-btn" aria-label="Play video">&#9654;</div>
+            </div>
+
+            <div
+              class="gallery-item"
+              data-category="reels"
+              data-type="image"
+              data-title="Shree Shiva Shakti Dham &#8211; 01"
+            >
+              <img
+                src="https://res.cloudinary.com/ovb0un2m/image/upload/SHREE_SHIVA_SHAKTI_DHAM_1_mjo4zw.jpg"
+                alt="Shree Shiva Shakti Dham social media content post 01 by Vedansh Visuals"
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="gallery-overlay">
+                <span>SHREE SHIVA SHAKTI DHAM</span
+                ><span class="gi-view-btn">View Project</span>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              data-category="reels"
+              data-type="image"
+              data-title="Shree Shiva Shakti Dham &#8211; 02"
+            >
+              <img
+                src="https://res.cloudinary.com/ovb0un2m/image/upload/SHREE_SHIVA_SHAKTI_DHAM_2_x82n3x.jpg"
+                alt="Shree Shiva Shakti Dham social media content post 02 by Vedansh Visuals"
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="gallery-overlay">
+                <span>SHREE SHIVA SHAKTI DHAM</span
+                ><span class="gi-view-btn">View Project</span>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              data-category="reels"
+              data-type="video"
+              data-title="SHREE SHIVA SHAKTI DHAM ❤"
+              data-video="https://player.cloudinary.com/embed/?cloud_name=ovb0un2m&public_id=SHREE_SHIVA_SHAKTI_DHAM_VIDEO_fi2wrf&autoplay=true&muted=true&loop=true&playsinline=true"
+            >
+              <video
+                src="https://res.cloudinary.com/ovb0un2m/video/upload/q_auto/SHREE_SHIVA_SHAKTI_DHAM_VIDEO_fi2wrf"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+              <div class="gallery-overlay">
+                <span>SHREE SHIVA SHAKTI DHAM ❤</span
                 ><span class="gi-view-btn">View Project</span>
               </div>
               <div class="play-btn" aria-label="Play video">&#9654;</div>
@@ -1560,47 +1720,20 @@
           <div class="rv-layout">
 
             <!-- ── Left: Submit form ── -->
-            <div class="rv-form-wrap">
-              <h3 class="rv-form-title">Leave a Review</h3>
-              <p class="rv-form-sub">Your feedback means the world. Takes 30 seconds.</p>
+       <div class="rv-form-wrap">
+              <div class="rv-form-header">
+                <div class="rv-form-avatar" id="rvFormAvatar">?</div>
+                <div class="rv-form-header-text">
+                  <input type="text" id="rvName" name="rvName" placeholder="Your name" autocomplete="name" class="rv-inline-input" />
+                  <input type="email" id="rvEmail" name="rvEmail" placeholder="Email address" autocomplete="email" class="rv-inline-input rv-inline-input--sub" />
+                </div>
+              </div>
+              <span class="rv-err rv-err--inline" id="rvErrName"></span>
+              <span class="rv-err rv-err--inline" id="rvErrEmail"></span>
 
               <form id="reviewForm" novalidate aria-label="Submit a client review">
 
-                <!-- Full Name -->
-                <div class="rv-field">
-                  <label class="rv-label" for="rvName">
-                    Full Name <span class="rv-req">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="rvName"
-                    name="rvName"
-                    placeholder="Your full name"
-                    autocomplete="name"
-                  />
-                  <span class="rv-err" id="rvErrName"></span>
-                </div>
-
-                <!-- Location -->
-                <div class="rv-field">
-                  <label class="rv-label" for="rvLocation">
-                    Location (City, State) <span class="rv-req">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="rvLocation"
-                    name="rvLocation"
-                    placeholder="e.g. Durgapur, West Bengal"
-                    autocomplete="address-level2"
-                  />
-                  <span class="rv-err" id="rvErrLocation"></span>
-                </div>
-
-                <!-- Star Rating -->
-                <div class="rv-field">
-                  <label class="rv-label">
-                    Rating <span class="rv-req">*</span>
-                  </label>
+                <div class="rv-stars-row">
                   <div class="rv-stars-input" role="group" aria-label="Star rating">
                     <span class="rv-star" data-value="1" role="button" tabindex="0" aria-pressed="false" aria-label="1 star">&#9733;</span>
                     <span class="rv-star" data-value="2" role="button" tabindex="0" aria-pressed="false" aria-label="2 stars">&#9733;</span>
@@ -1608,46 +1741,47 @@
                     <span class="rv-star" data-value="4" role="button" tabindex="0" aria-pressed="false" aria-label="4 stars">&#9733;</span>
                     <span class="rv-star" data-value="5" role="button" tabindex="0" aria-pressed="false" aria-label="5 stars">&#9733;</span>
                   </div>
-                  <span class="rv-err" id="rvErrRating"></span>
+                  <span class="rv-star-hint" id="rvStarHint">Tap to rate</span>
                 </div>
+                <span class="rv-err rv-err--inline" id="rvErrRating"></span>
 
-                <!-- Review Message -->
-                <div class="rv-field">
-                  <label class="rv-label" for="rvMsg">
-                    Your Review <span class="rv-req">*</span>
+                <textarea id="rvMsg" name="rvMsg" rows="4" placeholder="Share your experience with Vedansh Visuals&#8230;" class="rv-textarea"></textarea>
+                <span class="rv-err rv-err--inline" id="rvErrMsg"></span>
+
+                <input type="text" id="rvLocation" name="rvLocation" placeholder="City, State (optional)" autocomplete="address-level2" class="rv-location-input" />
+
+                <div class="rv-media-row">
+                  <label class="rv-media-btn" for="rvMedia" title="Add photos or video">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    Add photos or video
                   </label>
-                  <textarea
-                    id="rvMsg"
-                    name="rvMsg"
-                    rows="5"
-                    placeholder="Share your experience working with Vedansh Visuals…"
-                  ></textarea>
-                  <span class="rv-err" id="rvErrMsg"></span>
+                  <input type="file" id="rvMedia" name="rvMedia" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,video/webm" multiple style="display:none" />
                 </div>
+                <div id="rvMediaPreview" class="rv-media-strip"></div>
 
-                <button type="submit" class="rv-submit-btn" id="rvSubmitBtn">
-                  Submit Review
-                </button>
-                <p class="rv-form-msg" id="rvFormMsg" aria-live="polite" aria-atomic="true"></p>
+                <div class="rv-form-footer">
+                  <button type="submit" class="rv-submit-btn" id="rvSubmitBtn">Post Review</button>
+                  <p class="rv-form-msg" id="rvFormMsg" aria-live="polite" aria-atomic="true"></p>
+                </div>
 
               </form>
             </div>
             <!-- /rv-form-wrap -->
 
             <!-- ── Right: Reviews display ── -->
-            <div>
+            <div class="rv-display-col">
               <div class="rv-display-header">
                 <p class="rv-display-title">What Clients Say</p>
               </div>
 
               <div id="rvGrid" class="rv-grid">
                 <!-- Loader -->
-                <div id="rvLoader" class="rv-loader" style="grid-column:1/-1">
+                <div id="rvLoader" class="rv-loader" >
                   <span class="rv-spinner"></span>
                   Loading reviews…
                 </div>
                 <!-- Empty state -->
-                <div id="rvEmpty" class="rv-empty" style="grid-column:1/-1; display:none">
+                <div id="rvEmpty" class="rv-empty" style="display:none">
                   <span class="rv-empty-icon">&#9733;</span>
                   No reviews yet. Be the first to share your experience!
                 </div>
@@ -1661,8 +1795,10 @@
       </section>
       <!-- /CLIENT REVIEWS -->
 
+    </main>
+
     <!-- ===== FOOTER ===== -->
-    <footer class="footer" id="footer" aria-labelledby="footer-brand">
+    <footer class="footer" id="footer" role="contentinfo" aria-labelledby="footer-brand">
       <div class="container">
         <!-- Main grid -->
         <div class="ft-grid">
@@ -1730,6 +1866,7 @@
           <!-- Col 2: Quick Links -->
           <div class="ft-col">
             <h4 class="ft-heading">Quick Links</h4>
+            <nav aria-label="Footer quick links">
             <ul class="ft-links">
               <li><a href="#home">Home</a></li>
               <li><a href="#about">About</a></li>
@@ -1739,11 +1876,13 @@
               <li><a href="#reviews">Client Reviews</a></li>
               <li><a href="#contact">Let&#39;s Discuss Your Project</a></li>
             </ul>
+            </nav>
           </div>
 
           <!-- Col 3: Services -->
           <div class="ft-col">
             <h4 class="ft-heading">My Services</h4>
+            <nav aria-label="Footer services links">
             <ul class="ft-links">
               <li><a href="#services">Wedding &amp; Pre-Wedding Shoot</a></li>
               <li>
@@ -1757,6 +1896,7 @@
                 <a href="#services">Social Media Content</a>
               </li>
             </ul>
+            </nav>
           </div>
 
           <!-- Col 4: Contact -->
@@ -1810,6 +1950,8 @@
 
     <!-- ===== Firebase SDK (compat) ===== -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <script src="firebase-config.js"></script>
     <script src="reviews.js" defer></script>

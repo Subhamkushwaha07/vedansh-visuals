@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /delete-test-review.html
+
+# Block access to source config files
+Disallow: /firebase-config.js
 
 # Sitemap location
 Sitemap: https://vedansh-visuals.netlify.app/sitemap.xml

@@ -20,5 +20,7 @@ const firebaseConfig = {
 /* Initialise Firebase (compat SDK — loaded via CDN in index.html) */
 firebase.initializeApp(firebaseConfig);
 
-/* Export Firestore instance for use in reviews.js */
-const db = firebase.firestore();
+/* Export Firestore, Auth and Storage instances */
+const db      = firebase.firestore();
+const auth    = firebase.auth();
+const storage = firebase.storage();
