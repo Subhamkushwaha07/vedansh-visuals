@@ -482,6 +482,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .hsoc--fb:hover svg { color: var(--gold); }
 
+/* YouTube — same hover as Instagram & Facebook */
+.hsoc--yt:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,.08);
+  color: var(--gold-lt);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow:
+    0 8px 24px rgba(201,168,76,.22),
+    0 0 0 1px rgba(201,168,76,.18),
+    0 0 32px rgba(201,168,76,.10);
+}
+.hsoc--yt:hover svg { color: var(--gold); }
+
 /* Scroll-down arrow */
 .scroll-down {
   position: absolute;
