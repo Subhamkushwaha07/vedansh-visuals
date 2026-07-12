@@ -16,9 +16,11 @@
   const rvGrid      = document.getElementById('rvGrid');
   const rvEmpty     = document.getElementById('rvEmpty');
   const rvLoader    = document.getElementById('rvLoader');
-  const rvFormAvatar= document.getElementById('rvFormAvatar');
-  const rvStarHint  = document.getElementById('rvStarHint');
-  const stars       = document.querySelectorAll('.rv-star');
+  const rvFormAvatar    = document.getElementById('rvFormAvatar');
+  const rvStarHint      = document.getElementById('rvStarHint');
+  const rvSocialPlatform= document.getElementById('rvSocialPlatform');
+  const rvSocialHandle  = document.getElementById('rvSocialHandle');
+  const stars           = document.querySelectorAll('.rv-star');
 
   const STAR_HINTS = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
 
@@ -65,8 +67,10 @@
   function setInputErr(inp) { if (inp) { inp.style.borderColor = '#e05c5c'; inp.style.boxShadow = '0 0 0 3px rgba(224,92,92,.1)'; } }
   function setInputOk(inp)  { if (inp) { inp.style.borderColor = ''; inp.style.boxShadow = ''; } }
 
-  if (rvEmail)    rvEmail.addEventListener('input',    () => { clearErr('rvErrEmail');    setInputOk(rvEmail); });
-  if (rvMsg)      rvMsg.addEventListener('input',      () => { clearErr('rvErrMsg');      setInputOk(rvMsg); });
+  if (rvEmail)         rvEmail.addEventListener('input',          () => { clearErr('rvErrEmail');  setInputOk(rvEmail); });
+  if (rvMsg)           rvMsg.addEventListener('input',            () => { clearErr('rvErrMsg');    setInputOk(rvMsg); });
+  if (rvSocialPlatform)rvSocialPlatform.addEventListener('change',() => { clearErr('rvErrSocial'); setInputOk(rvSocialPlatform); });
+  if (rvSocialHandle)  rvSocialHandle.addEventListener('input',   () => { clearErr('rvErrSocial'); setInputOk(rvSocialHandle); });
 
   /* ── Form status ──────────────────────────────────── */
   function showMsg(text, type) {
@@ -84,20 +88,25 @@
     form.addEventListener('submit', async e => {
       e.preventDefault();
 
-      const name     = rvName     ? rvName.value.trim()     : '';
-      const email    = rvEmail    ? rvEmail.value.trim()    : '';
-      const location = rvLocation ? rvLocation.value.trim() : '';
-      const msg      = rvMsg      ? rvMsg.value.trim()      : '';
+      const name           = rvName           ? rvName.value.trim()           : '';
+      const email          = rvEmail          ? rvEmail.value.trim()          : '';
+      const location       = rvLocation       ? rvLocation.value.trim()       : '';
+      const msg            = rvMsg            ? rvMsg.value.trim()            : '';
+      const socialPlatform = rvSocialPlatform ? rvSocialPlatform.value        : '';
+      const socialHandle   = rvSocialHandle   ? rvSocialHandle.value.trim()   : '';
 
       let valid = true;
       if (!name)     { setErr('rvErrName',  'Please enter your name.');              setInputErr(rvName);  valid = false; }
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                        setErr('rvErrEmail', 'Please enter a valid email address.');  setInputErr(rvEmail); valid = false; }
+      if (!socialPlatform || !socialHandle) {
+                       setErr('rvErrSocial', 'Please select a platform and enter your username.');
+                       if (!socialPlatform) setInputErr(rvSocialPlatform);
+                       if (!socialHandle)   setInputErr(rvSocialHandle);
+                       valid = false; }
       if (selectedRating === 0) { setErr('rvErrRating', 'Please select a rating.'); valid = false; }
       if (!msg)      { setErr('rvErrMsg',   'Please write your review.');            setInputErr(rvMsg);   valid = false; }
       if (!valid) return;
-
-      const allFiles   = [];
 
       rvSubmitBtn.disabled    = true;
       rvSubmitBtn.textContent = 'Posting…';
@@ -105,6 +114,7 @@
       try {
         await db.collection('reviews').add({
           name, email, location,
+          socialPlatform, socialHandle,
           rating:    selectedRating,
           message:   msg,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -114,6 +124,8 @@
         form.reset();
         if (rvName) rvName.value = '';
         if (rvEmail) rvEmail.value = '';
+        if (rvSocialPlatform) rvSocialPlatform.value = '';
+        if (rvSocialHandle)   rvSocialHandle.value   = '';
         selectedRating = 0;
         stars.forEach(s => { s.classList.remove('selected', 'hovered'); s.setAttribute('aria-pressed', 'false'); });
         if (rvStarHint) rvStarHint.textContent = 'Tap to rate';
@@ -125,7 +137,7 @@
         showMsg('⚠ ' + (err.message || 'Something went wrong. Please try again.'), 'error');
       } finally {
         rvSubmitBtn.disabled    = false;
-        rvSubmitBtn.textContent = 'Post';
+        rvSubmitBtn.textContent = 'Post Review';
       }
     });
   }
@@ -229,6 +241,24 @@
       loc.className = 'rv-card-location';
       loc.textContent = '\uD83D\uDCCD ' + escapeHtml(data.location);
       meta.appendChild(loc);
+    }
+
+    if (data.socialPlatform && data.socialHandle) {
+      const PLATFORM_META = {
+        Instagram: { icon: '\uD83D\uDCF7', buildUrl: h => 'https://instagram.com/' + h.replace(/^@/, '') },
+        Facebook:  { icon: '\uD83D\uDCD8', buildUrl: h => 'https://facebook.com/'  + h.replace(/^@/, '') },
+        YouTube:   { icon: '\u25B6\uFE0F', buildUrl: h => 'https://youtube.com/@'  + h.replace(/^@/, '') }
+      };
+      const pm = PLATFORM_META[data.socialPlatform];
+      if (pm) {
+        const socLink = document.createElement('a');
+        socLink.className  = 'rv-card-social';
+        socLink.href       = pm.buildUrl(data.socialHandle);
+        socLink.target     = '_blank';
+        socLink.rel        = 'noopener noreferrer';
+        socLink.textContent = pm.icon + ' ' + data.socialPlatform + ': ' + escapeHtml(data.socialHandle);
+        meta.appendChild(socLink);
+      }
     }
 
     header.appendChild(avatar);

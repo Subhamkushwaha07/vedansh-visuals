@@ -317,6 +317,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* =====================================================
+   PORTFOLIO NAV — Desktop: plain link (no dropdown)
+   ===================================================== */
+
+/* Hide arrow and submenu on desktop */
+.nav-portfolio-arrow { display: none; }
+.nav-portfolio-sub   { display: none; }
+
+/* Make the toggle behave exactly like every other .nav-link */
+.nav-portfolio-toggle {
+  overflow: hidden;
+  padding-right: 0;
+}
+
+/* =====================================================
    HERO
    ===================================================== */
 .hero {
@@ -1654,11 +1668,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* =====================================================
    FOOTER
    ===================================================== */
-@keyframes ftFadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
 .footer {
   background:
     radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201,168,76,.07) 0%, transparent 60%),
@@ -1931,6 +1940,91 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-links.open { transform: translateX(0); }
   .nav-link { font-size: 1rem; }
 
+  /* Portfolio mobile submenu — override desktop flyout styles */
+  .nav-portfolio-toggle {
+    font-size: 1rem;
+    overflow: visible;
+    transform: none !important;
+    text-shadow: none !important;
+  }
+  .nav-portfolio-toggle::before,
+  .nav-portfolio-toggle::after { display: none; }
+  .nav-portfolio-toggle:hover { color: var(--gold); transform: none !important; text-shadow: none !important; }
+  .nav-portfolio-arrow {
+    position: static;
+    transform: none;
+    font-size: 0.55rem;
+    margin-left: 6px;
+    vertical-align: middle;
+    pointer-events: none;
+  }
+  .nav-portfolio-toggle[aria-expanded="true"] .nav-portfolio-arrow {
+    transform: rotate(90deg);
+  }
+  /* Reset desktop flyout positioning — become a normal inline block */
+  .nav-portfolio-sub {
+    position: static;
+    transform: none !important;
+    min-width: unset;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    /* Collapsed by default on mobile */
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.35s cubic-bezier(.4,0,.2,1), opacity 0.3s ease;
+  }
+  .nav-portfolio-sub::before { display: none; }
+  .nav-portfolio-sub.open {
+    max-height: 160px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* Override hover/focus-within open state on mobile */
+  .nav-item-portfolio:hover .nav-portfolio-sub,
+  .nav-item-portfolio:focus-within .nav-portfolio-sub {
+    opacity: 0;
+    pointer-events: none;
+    transform: none !important;
+  }
+  .nav-item-portfolio:hover .nav-portfolio-sub.open,
+  .nav-item-portfolio:focus-within .nav-portfolio-sub.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* Override hover transforms on the toggle button */
+  .nav-item-portfolio:hover .nav-portfolio-toggle,
+  .nav-item-portfolio:focus-within .nav-portfolio-toggle {
+    transform: none !important;
+    text-shadow: none !important;
+  }
+  .nav-item-portfolio:hover .nav-portfolio-arrow,
+  .nav-item-portfolio:focus-within .nav-portfolio-arrow {
+    transform: none;
+  }
+  .nav-sub-link {
+    padding: 8px 0 8px 18px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    color: rgba(255,255,255,0.7);
+    border-left: 1.5px solid rgba(201,168,76,0.3);
+    background: none;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .nav-sub-link:hover {
+    color: var(--gold);
+    border-left-color: var(--gold);
+    background: none;
+    padding-left: 18px;
+  }
+
   /* Services */
   .services-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
 
@@ -1962,120 +2056,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .contact-form  { padding: 24px 18px; }
   .csc           { padding: 22px 18px; }
-}
-
-/* =====================================================
-   PORTFOLIO GALLERY SECTION
-   ===================================================== */
-
-/* --- Filter Buttons --- */
-.pg-filters {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 52px;
-}
-.pg-btn {
-  padding: 7px 20px;
-  font-size: 0.7rem;
-  font-family: var(--font-sans);
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--gray-lt);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: var(--radius);
-  transition: all var(--transition);
-}
-.pg-btn:hover,
-.pg-btn.active {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--black);
-}
-
-/* --- Responsive Image Grid (4 cols → 3 → 2) --- */
-.pg-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-/* Each card */
-.pg-item {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border-radius: var(--radius);
-  cursor: pointer;
-}
-.pg-item.pg-hidden { display: none; }
-
-/* Hover zoom */
-.pg-item img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.55s ease;
-  display: block;
-}
-.pg-item:hover img { transform: scale(1.08); }
-
-/* Gradient overlay */
-.pg-item-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,0) 55%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 16px 14px;
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-.pg-item:hover .pg-item-overlay { opacity: 1; }
-
-.pg-cat-label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-family: var(--font-sans);
-}
-.pg-zoom-icon {
-  font-size: 1.5rem;
-  color: var(--white);
-  line-height: 1;
-  transition: transform var(--transition);
-}
-.pg-item:hover .pg-zoom-icon { transform: scale(1.2); }
-
-/* Gold border inset on hover */
-.pg-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 1.5px solid transparent;
-  border-radius: 2px;
-  transition: border-color var(--transition);
-  pointer-events: none;
-}
-.pg-item:hover::after { border-color: var(--gold); }
-
-/* --- View More row --- */
-.pg-view-more {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  margin-top: 52px;
-}
-.pg-count {
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gray);
 }
 
 /* =====================================================
@@ -2296,6 +2276,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .vid-frame-wrap iframe {
   width: 100%; height: 100%;
   display: block;
+  border: none;
 }
 
 .vid-title {
@@ -2674,18 +2655,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .pc-btn--gold:active { transform: translateY(-1px); }
 
-/* ---- Responsive ---- */
-@media (max-width: 1024px) {
-  .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
-}
-@media (max-width: 640px) {
-  .pricing-grid { grid-template-columns: 1fr; gap: 16px; }
-  .pc           { padding: 28px 20px 26px; border-radius: 14px; }
-  .pc-amount    { font-size: 1.9rem; }
-  .pricing-intro    { font-size: 0.86rem; margin-bottom: 40px; }
-  /* Disable heavy 3D hover on touch devices */
-  .pc.pc-visible:hover { transform: translateY(-6px) scale(1.01); }
-}
 
 /* =====================================================
    HOME SECTION — Entry Animations & Parallax

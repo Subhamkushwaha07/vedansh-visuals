@@ -34,7 +34,9 @@ const navLinksList = document.getElementById('navLinks');
 navToggle.addEventListener('click', () => {
   navToggle.classList.toggle('open');
   navLinksList.classList.toggle('open');
-  document.body.style.overflow = navLinksList.classList.contains('open') ? 'hidden' : '';
+  const isOpen = navLinksList.classList.contains('open');
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 });
 
 /* Close menu when a link is clicked */
@@ -42,10 +44,59 @@ navLinksList.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navToggle.classList.remove('open');
     navLinksList.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   });
 });
 
+
+/* ---------- 2b. Portfolio mobile submenu ---------- */
+(function () {
+  var toggle = document.querySelector('.nav-portfolio-toggle');
+  var sub    = document.getElementById('navPortfolioSub');
+  if (!toggle || !sub) return;
+
+  toggle.addEventListener('click', function () {
+    var isOpen = sub.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    /* arrow is now a sibling of the button */
+    var arrow = toggle.nextElementSibling;
+    if (arrow && arrow.classList.contains('nav-portfolio-arrow')) {
+      arrow.style.transform = isOpen ? 'rotate(90deg)' : 'none';
+    }
+  });
+
+  sub.querySelectorAll('.nav-sub-link').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var primary = link.getAttribute('data-filter-primary');
+
+      /* Close mobile menu */
+      navToggle.classList.remove('open');
+      navLinksList.classList.remove('open');
+      document.body.style.overflow = '';
+
+      /* Reset arrow */
+      sub.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      var arrow = toggle.nextElementSibling;
+      if (arrow && arrow.classList.contains('nav-portfolio-arrow')) {
+        arrow.style.transform = 'none';
+      }
+
+      /* Scroll to portfolio */
+      var sec = document.getElementById('portfolio');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      /* Click the matching primary filter button */
+      var selector = primary && primary !== 'all'
+        ? '.filter-btn[data-filter="' + primary + '"]'
+        : '.filter-btn[data-filter="all"]';
+      var btn = document.querySelector(selector);
+      if (btn) btn.click();
+    });
+  });
+})();
 
 /* ---------- 3. Portfolio — two-level filter ---------- */
 (function () {

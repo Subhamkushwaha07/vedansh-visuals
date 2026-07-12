@@ -22,5 +22,3 @@ firebase.initializeApp(firebaseConfig);
 
 /* Export Firestore, Auth and Storage instances */
 const db      = firebase.firestore();
-const auth    = firebase.auth();
-const storage = firebase.storage();
