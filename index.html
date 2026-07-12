@@ -1771,15 +1771,6 @@
 
                 <input type="text" id="rvLocation" name="rvLocation" placeholder="City, State (optional)" autocomplete="address-level2" class="rv-location-input" />
 
-                <div class="rv-media-row">
-                  <label class="rv-media-btn" for="rvMedia" title="Add photos or video">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                    Add photos or video
-                  </label>
-                  <input type="file" id="rvMedia" name="rvMedia" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,video/webm" multiple style="display:none" />
-                </div>
-                <div id="rvMediaPreview" class="rv-media-strip"></div>
-
                 <div class="rv-form-footer">
                   <button type="submit" class="rv-submit-btn" id="rvSubmitBtn">Post Review</button>
                   <p class="rv-form-msg" id="rvFormMsg" aria-live="polite" aria-atomic="true"></p>
@@ -1992,7 +1983,6 @@
     <!-- ===== Firebase SDK (compat) ===== -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <script src="firebase-config.js"></script>
     <script src="reviews.js" defer></script>

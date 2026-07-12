@@ -11,7 +11,6 @@
   const rvEmail     = document.getElementById('rvEmail');
   const rvLocation  = document.getElementById('rvLocation');
   const rvMsg       = document.getElementById('rvMsg');
-  const rvMedia     = document.getElementById('rvMedia');
   const rvSubmitBtn = document.getElementById('rvSubmitBtn');
   const rvFormMsg   = document.getElementById('rvFormMsg');
   const rvGrid      = document.getElementById('rvGrid');
@@ -19,7 +18,6 @@
   const rvLoader    = document.getElementById('rvLoader');
   const rvFormAvatar= document.getElementById('rvFormAvatar');
   const rvStarHint  = document.getElementById('rvStarHint');
-  const rvMediaPreview = document.getElementById('rvMediaPreview');
   const stars       = document.querySelectorAll('.rv-star');
 
   const STAR_HINTS = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
@@ -61,35 +59,7 @@
     });
   });
 
-  /* ── Single media picker preview ─────────────────── */
-  if (rvMedia && rvMediaPreview) {
-    rvMedia.addEventListener('change', () => {
-      rvMediaPreview.innerHTML = '';
-      Array.from(rvMedia.files).forEach(file => {
-        const thumb = document.createElement('div');
-        thumb.className = 'rv-thumb';
-        if (file.type.startsWith('video/')) {
-          const vid = document.createElement('video');
-          vid.src = URL.createObjectURL(file);
-          vid.preload = 'metadata';
-          vid.muted = true;
-          thumb.appendChild(vid);
-          const icon = document.createElement('div');
-          icon.className = 'rv-thumb-vid-icon';
-          icon.textContent = '▶';
-          thumb.appendChild(icon);
-        } else {
-          const img = document.createElement('img');
-          img.src = URL.createObjectURL(file);
-          img.alt = file.name;
-          thumb.appendChild(img);
-        }
-        rvMediaPreview.appendChild(thumb);
-      });
-    });
-  }
-
-  /* ── Validation helpers ───────────────────────────── */
+/* ── Validation helpers ───────────────────────────── */
   function setErr(id, msg)  { const el = document.getElementById(id); if (el) el.textContent = msg; }
   function clearErr(id)     { const el = document.getElementById(id); if (el) el.textContent = ''; }
   function setInputErr(inp) { if (inp) { inp.style.borderColor = '#e05c5c'; inp.style.boxShadow = '0 0 0 3px rgba(224,92,92,.1)'; } }
@@ -109,14 +79,7 @@
     }
   }
 
-  /* ── Upload helper ────────────────────────────────── */
-  async function uploadFile(file, path) {
-    const ref = storage.ref(path);
-    await ref.put(file);
-    return ref.getDownloadURL();
-  }
-
-  /* ── Submit ───────────────────────────────────────── */
+/* ── Submit ───────────────────────────────────────── */
   if (form) {
     form.addEventListener('submit', async e => {
       e.preventDefault();
@@ -134,33 +97,16 @@
       if (!msg)      { setErr('rvErrMsg',   'Please write your review.');            setInputErr(rvMsg);   valid = false; }
       if (!valid) return;
 
-      const allFiles   = rvMedia ? Array.from(rvMedia.files) : [];
-      const imageFiles = allFiles.filter(f => f.type.startsWith('image/')).slice(0, 5);
-      const videoFile  = allFiles.find(f => f.type.startsWith('video/')) || null;
+      const allFiles   = [];
 
       rvSubmitBtn.disabled    = true;
-      rvSubmitBtn.textContent = allFiles.length ? 'Uploading…' : 'Posting…';
+      rvSubmitBtn.textContent = 'Posting…';
 
       try {
-        const ts = Date.now();
-        const imageURLs = [];
-        let   videoURL  = '';
-
-        for (let i = 0; i < imageFiles.length; i++) {
-          imageURLs.push(await uploadFile(imageFiles[i], `reviews/${ts}_img${i}_${imageFiles[i].name}`));
-        }
-        if (videoFile) {
-          videoURL = await uploadFile(videoFile, `reviews/${ts}_vid_${videoFile.name}`);
-        }
-
-        rvSubmitBtn.textContent = 'Posting…';
-
         await db.collection('reviews').add({
           name, email, location,
           rating:    selectedRating,
           message:   msg,
-          images:    imageURLs,
-          video:     videoURL,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
 
@@ -172,7 +118,6 @@
         stars.forEach(s => { s.classList.remove('selected', 'hovered'); s.setAttribute('aria-pressed', 'false'); });
         if (rvStarHint) rvStarHint.textContent = 'Tap to rate';
         if (rvFormAvatar) rvFormAvatar.textContent = '?';
-        if (rvMediaPreview) rvMediaPreview.innerHTML = '';
         loadReviews();
 
       } catch (err) {
@@ -250,6 +195,13 @@
     nameRow.appendChild(nameEl);
     meta.appendChild(nameRow);
 
+    if (data.email) {
+      const emailEl = document.createElement('p');
+      emailEl.className = 'rv-card-email';
+      emailEl.textContent = maskEmail(data.email);
+      meta.appendChild(emailEl);
+    }
+
     /* Stars + date row */
     const ratingRow = document.createElement('div');
     ratingRow.className = 'rv-card-rating-row';
@@ -311,6 +263,18 @@
     }
 
     return card;
+  }
+
+  /* ── Email masking ──────────────────────────────────── */
+  function maskEmail(email) {
+    const at = email.indexOf('@');
+    if (at < 1) return email;
+    const local  = email.slice(0, at);
+    const domain = email.slice(at);
+    const keep   = Math.max(2, Math.min(3, Math.floor(local.length / 4)));
+    const tail   = local.length > 7 ? 2 : 0;
+    const stars  = '*'.repeat(Math.max(2, local.length - keep - tail));
+    return local.slice(0, keep) + stars + (tail ? local.slice(-tail) : '') + domain;
   }
 
   /* ── XSS guard ────────────────────────────────────── */

@@ -208,70 +208,6 @@
   box-shadow: 0 0 0 2px rgba(201,168,76,.1);
 }
 
-/* ── Media row ────────────────────────────────────── */
-.rv-media-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-}
-.rv-media-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Nunito Sans', system-ui, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  color: rgba(201,168,76,.8);
-  background: rgba(201,168,76,.07);
-  border: 1px solid rgba(201,168,76,.2);
-  border-radius: 20px;
-  padding: 6px 12px;
-  cursor: pointer;
-  transition: background .2s ease, border-color .2s ease, color .2s ease;
-  white-space: nowrap;
-}
-.rv-media-btn:hover {
-  background: rgba(201,168,76,.13);
-  border-color: rgba(201,168,76,.42);
-  color: #c9a84c;
-}
-
-/* ── Media thumbnail strip ────────────────────────── */
-.rv-media-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
-}
-.rv-media-strip .rv-thumb {
-  position: relative;
-  width: 52px;
-  height: 52px;
-  border-radius: 7px;
-  overflow: hidden;
-  border: 1px solid rgba(201,168,76,.22);
-  flex-shrink: 0;
-}
-.rv-media-strip .rv-thumb img,
-.rv-media-strip .rv-thumb video {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.rv-media-strip .rv-thumb-vid-icon {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,.38);
-  color: #fff;
-  font-size: 1rem;
-  pointer-events: none;
-}
-
 /* ── Form footer ──────────────────────────────────── */
 .rv-form-footer {
   display: flex;
@@ -481,6 +417,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0;
+}
+.rv-card-email {
+  font-size: 0.68rem;
+  color: rgba(244,244,240,.35);
+  letter-spacing: 0.2px;
+  margin: 1px 0 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Stars + date on same row */
