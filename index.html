@@ -954,19 +954,8 @@
               <button class="filter-btn" data-filter="video">Videos</button>
             </div>
 
-            <!-- Level 2: Category sub-row (hidden when All; shown for Photos/Videos) -->
-            <div class="pf-sub" id="pfSub">
-              <button class="pf-sub-btn active" data-cat="all">All</button>
-              <button class="pf-sub-btn" data-cat="wedding-prewedding">
-                Wedding &amp; Pre-Wedding
-              </button>
-              <button class="pf-sub-btn" data-cat="cinematic">Cinematic</button>
-              <button class="pf-sub-btn" data-cat="travel">Travel</button>
-              <button class="pf-sub-btn" data-cat="birthday">Birthday</button>
-              <button class="pf-sub-btn" data-cat="reels">
-                Instagram Posts
-              </button>
-            </div>
+            <!-- Level 2: Category sub-row (hidden when All; populated by script.js) -->
+            <div class="pf-sub" id="pfSub"></div>
           </div>
           <!-- /pf-wrap -->
 
@@ -2462,7 +2451,7 @@
         <!-- Bottom bar -->
         <div class="ft-bottom">
           <p class="ft-copy">
-            &copy; 2026 Vedansh Visuals. All Rights Reserved.
+            &copy; 2025 Vedansh Visuals. All Rights Reserved.
           </p>
           <p class="ft-credit">
             Designed &amp; Developed with &#10084;&#65039; by Vedansh Visuals
@@ -2495,7 +2484,7 @@
         var handle  = document.getElementById('rvSocialHandle');
         var otherFields       = document.getElementById('rvOtherFields');
         var otherPlatformName = document.getElementById('rvOtherPlatformName');
-        var otherIconPreview  = document.getElementById('rvOtherIconPreview');
+        var otherIconPreview  = null; /* element removed */
         if (!drop || !trigger || !select) return;
 
         var iconEl  = trigger.querySelector('.rv-platform-icon');
@@ -2512,19 +2501,19 @@
           LinkedIn:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>',
           X:         '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
           Website:   GLOBE_SVG,
-          Other:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>'
+          Other:     GLOBE_SVG
         };
 
         /* ── Placeholder map ─────────────────────────── */
         var PLACEHOLDERS = {
           Instagram: '@username',
-          Facebook:  'Profile / Page Name',
-          YouTube:   'Channel Name',
-          Pinterest: 'Username',
-          LinkedIn:  'Profile URL or Username',
+          Facebook:  '@username',
+          YouTube:   '@username',
+          Pinterest: '@username',
+          LinkedIn:  '@username',
           X:         '@username',
-          Website:   'https://example.com',
-          Other:     'Username / Channel / Profile Link'
+          Website:   '@username',
+          Other:     '@username'
         };
 
         /* ── Open / close ────────────────────────────── */
