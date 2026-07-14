@@ -691,16 +691,31 @@
 .rv-soc-other { color: rgba(244,244,240,.6); }
 
 /* Handle text */
+.rv-card-social-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(244,244,240,.55);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 .rv-card-social-handle {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: #c9a84c;
   text-decoration: none;
-  transition: text-decoration .22s ease;
+  transition: color .22s ease, text-shadow .22s ease, text-decoration-color .22s ease;
 }
-.rv-card-social:hover .rv-card-social-handle {
+a.rv-card-social-handle {
+  cursor: pointer;
   text-decoration: underline;
+  text-decoration-color: transparent;
   text-underline-offset: 2px;
+}
+a.rv-card-social-handle:hover {
+  color: #f0d878;
+  text-decoration-color: #f0d878;
+  text-shadow: 0 0 10px rgba(201,168,76,.45);
 }
 
 /* Review text */
