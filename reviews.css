@@ -208,25 +208,26 @@
   box-shadow: 0 0 0 2px rgba(201,168,76,.1);
 }
 
-/* ── Social platform row ──────────────────────────── */
-.rv-social-row {
+/* ── Platform section (stacked) ──────────────────── */
+.rv-platform-section {
   display: flex;
+  flex-direction: column;
   gap: 8px;
   margin-top: 10px;
-  align-items: center;
 }
 
 /* Custom platform dropdown */
 .rv-platform-drop {
   position: relative;
-  flex-shrink: 0;
+  width: 100%;
 }
 .rv-platform-trigger {
   display: flex;
   align-items: center;
   gap: 7px;
+  width: 100%;
   height: 42px;
-  padding: 0 10px 0 10px;
+  padding: 0 12px;
   background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 10px;
@@ -237,6 +238,7 @@
   white-space: nowrap;
   transition: border-color .22s ease, background .22s ease, box-shadow .22s ease;
   outline: none;
+  box-sizing: border-box;
 }
 .rv-platform-trigger:focus,
 .rv-platform-drop--open .rv-platform-trigger {
@@ -259,6 +261,11 @@
 .rv-platform-icon--instagram { color: #e1306c; }
 .rv-platform-icon--facebook  { color: #1877f2; }
 .rv-platform-icon--youtube   { color: #ff0000; }
+.rv-platform-icon--pinterest { color: #e60023; }
+.rv-platform-icon--linkedin  { color: #0a66c2; }
+.rv-platform-icon--x         { color: #f4f4f0; }
+.rv-platform-icon--website   { color: #c9a84c; }
+.rv-platform-icon--other     { color: rgba(244,244,240,.45); }
 .rv-platform-chevron {
   width: 13px;
   height: 13px;
@@ -274,7 +281,7 @@
   position: absolute;
   top: calc(100% + 5px);
   left: 0;
-  min-width: 100%;
+  width: 100%;
   background: #1a1a18;
   border: 1px solid rgba(201,168,76,.22);
   border-radius: 10px;
@@ -314,12 +321,37 @@
   height: 18px;
   flex-shrink: 0;
 }
-.rv-opt-icon--ig { color: #e1306c; }
-.rv-opt-icon--fb { color: #1877f2; }
-.rv-opt-icon--yt { color: #ff0000; }
+.rv-opt-icon--ig  { color: #e1306c; }
+.rv-opt-icon--fb  { color: #1877f2; }
+.rv-opt-icon--yt  { color: #ff0000; }
+.rv-opt-icon--pt  { color: #e60023; }
+.rv-opt-icon--li  { color: #0a66c2; }
+.rv-opt-icon--x   { color: #f4f4f0; }
+.rv-opt-icon--web { color: #c9a84c; }
+.rv-opt-icon--other { color: rgba(244,244,240,.5); }
+/* Divider option (Other) */
+.rv-platform-opt--divider {
+  margin-top: 4px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 11px;
+}
+
+/* ── Other: extra fields ──────────────────────────── */
+.rv-other-fields {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows .28s ease;
+  margin-top: 0;
+}
+.rv-other-fields--visible {
+  grid-template-rows: 1fr;
+  margin-top: 8px;
+}
+.rv-other-fields > * { min-height: 0; }
+
 .rv-handle-input {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
   background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 10px;
@@ -330,6 +362,7 @@
   color: rgba(244,244,240,.75);
   outline: none;
   transition: border-color .22s ease, background .22s ease, box-shadow .22s ease;
+  box-sizing: border-box;
 }
 .rv-handle-input::placeholder { color: rgba(180,180,180,.5); }
 .rv-handle-input:focus {
@@ -549,45 +582,60 @@
   margin-bottom: 0;
 }
 .rv-card-email {
-  font-size: 0.68rem;
-  color: rgba(244,244,240,.35);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(244,244,240,.48);
   letter-spacing: 0.2px;
-  margin: 1px 0 3px;
+  margin: 3px 0 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.rv-card-email::before {
+  content: '✉';
+  font-size: 0.72rem;
+  opacity: .65;
+  flex-shrink: 0;
 }
 
 /* Stars + date on same row */
 .rv-card-rating-row {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   flex-wrap: wrap;
+  margin-top: 1px;
 }
 .rv-card-stars { display: flex; gap: 2px; }
 .rv-card-star {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   color: rgba(255,255,255,.14);
   line-height: 1;
 }
 .rv-card-star.filled {
   color: #c9a84c;
-  filter: drop-shadow(0 0 2px rgba(201,168,76,.38));
+  filter: drop-shadow(0 0 3px rgba(201,168,76,.45));
 }
 .rv-card-date {
-  font-size: 0.63rem;
-  color: rgba(244,244,240,.3);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(244,244,240,.38);
   letter-spacing: 0.2px;
   white-space: nowrap;
 }
 
 /* Location */
 .rv-card-location {
-  display: block;
-  font-size: 0.67rem;
-  color: rgba(244,244,240,.35);
-  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(244,244,240,.46);
+  margin-top: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -595,17 +643,65 @@
 
 /* Social link */
 .rv-card-social {
-  display: block;
-  font-size: 0.68rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
   color: #c9a84c;
-  margin-top: 3px;
-  white-space: nowrap;
+  margin-top: 6px;
+  max-width: 100%;
+  text-decoration: none;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  transition: color .22s ease, text-shadow .22s ease;
+}
+.rv-card-social:hover {
+  color: #f0d878;
+  text-shadow: 0 0 10px rgba(201,168,76,.5);
+}
+
+/* Platform icon wrapper */
+.rv-card-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  transition: transform .22s ease;
+}
+.rv-card-social-icon svg {
+  width: 19px;
+  height: 19px;
+  display: block;
+}
+.rv-card-social:hover .rv-card-social-icon {
+  transform: scale(1.1);
+}
+
+/* Platform-specific icon colors */
+.rv-soc-ig    { color: #e1306c; }
+.rv-soc-fb    { color: #1877f2; }
+.rv-soc-yt    { color: #ff0000; }
+.rv-soc-pt    { color: #e60023; }
+.rv-soc-li    { color: #0a66c2; }
+.rv-soc-x     { color: #f4f4f0; }
+.rv-soc-web   { color: #c9a84c; }
+.rv-soc-other { color: rgba(244,244,240,.6); }
+
+/* Handle text */
+.rv-card-social-handle {
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   text-decoration: none;
-  transition: opacity .18s ease;
+  transition: text-decoration .22s ease;
 }
-.rv-card-social:hover { opacity: .75; text-decoration: underline; }
+.rv-card-social:hover .rv-card-social-handle {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 
 /* Review text */
 .rv-card-msg {

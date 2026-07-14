@@ -474,6 +474,7 @@
         y.parentNode.insertBefore(t, y);
       })(window, document, "clarity", "script", "s0ey7iqk5p");
     </script>
+    <meta name="p:domain_verify" content="6f44a637c1d7c06207d500f0de8b7130"/>
   </head>
   <body>
     <!-- ===== HEADER / NAVBAR ===== -->
@@ -2072,26 +2073,27 @@
                 novalidate
                 aria-label="Submit a client review"
               >
-                <div class="rv-social-row">
-                  <!-- Hidden select keeps existing JS (rvSocialPlatform.value) working unchanged -->
+                <!-- Platform section: stacked premium layout -->
+                <div class="rv-platform-section">
+                  <!-- Hidden select â€” keeps reviews.js validation unchanged -->
                   <select
                     id="rvSocialPlatform"
                     name="rvSocialPlatform"
                     aria-hidden="true"
                     tabindex="-1"
-                    style="
-                      position: absolute;
-                      opacity: 0;
-                      pointer-events: none;
-                      width: 0;
-                      height: 0;
-                    "
+                    style="position:absolute;opacity:0;pointer-events:none;width:0;height:0"
                   >
                     <option value=""></option>
                     <option value="Instagram">Instagram</option>
                     <option value="Facebook">Facebook</option>
                     <option value="YouTube">YouTube</option>
+                    <option value="Pinterest">Pinterest</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="X">X</option>
+                    <option value="Website">Website</option>
+                    <option value="Other">Other</option>
                   </select>
+
                   <!-- Custom dropdown -->
                   <div class="rv-platform-drop" id="rvPlatformDrop">
                     <button
@@ -2103,124 +2105,67 @@
                       aria-label="Select platform"
                     >
                       <span class="rv-platform-icon" aria-hidden="true">
-                        <svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="1.8"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect x="2" y="2" width="20" height="20" rx="5" />
-                          <circle cx="12" cy="12" r="4" />
-                          <circle
-                            cx="17.5"
-                            cy="6.5"
-                            r="0.8"
-                            fill="currentColor"
-                            stroke="none"
-                          />
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                       </span>
                       <span class="rv-platform-label">Platform</span>
-                      <svg
-                        class="rv-platform-chevron"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
+                      <svg class="rv-platform-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <ul
-                      class="rv-platform-list"
-                      role="listbox"
-                      aria-label="Social media platform"
-                    >
-                      <li
-                        class="rv-platform-opt"
-                        role="option"
-                        data-value="Instagram"
-                        aria-selected="false"
-                      >
-                        <svg
-                          class="rv-opt-icon rv-opt-icon--ig"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="1.8"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <rect x="2" y="2" width="20" height="20" rx="5" />
-                          <circle cx="12" cy="12" r="4" />
-                          <circle
-                            cx="17.5"
-                            cy="6.5"
-                            r="0.8"
-                            fill="currentColor"
-                            stroke="none"
-                          />
-                        </svg>
+                    <ul class="rv-platform-list" role="listbox" aria-label="Social media platform">
+                      <li class="rv-platform-opt" role="option" data-value="Instagram" aria-selected="false">
+                        <svg class="rv-opt-icon rv-opt-icon--ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
                         Instagram
                       </li>
-                      <li
-                        class="rv-platform-opt"
-                        role="option"
-                        data-value="Facebook"
-                        aria-selected="false"
-                      >
-                        <svg
-                          class="rv-opt-icon rv-opt-icon--fb"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="1.8"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path
-                            d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-                          />
-                        </svg>
+                      <li class="rv-platform-opt" role="option" data-value="Facebook" aria-selected="false">
+                        <svg class="rv-opt-icon rv-opt-icon--fb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                         Facebook
                       </li>
-                      <li
-                        class="rv-platform-opt"
-                        role="option"
-                        data-value="YouTube"
-                        aria-selected="false"
-                      >
-                        <svg
-                          class="rv-opt-icon rv-opt-icon--yt"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="1.8"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path
-                            d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
-                          />
-                          <polygon
-                            points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
-                            fill="currentColor"
-                            stroke="none"
-                          />
-                        </svg>
+                      <li class="rv-platform-opt" role="option" data-value="YouTube" aria-selected="false">
+                        <svg class="rv-opt-icon rv-opt-icon--yt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
                         YouTube
+                      </li>
+                      <li class="rv-platform-opt" role="option" data-value="Pinterest" aria-selected="false">
+                        <svg class="rv-opt-icon rv-opt-icon--pt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.236 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.181-.78 1.172-4.97 1.172-4.97s-.299-.598-.299-1.482c0-1.388.806-2.428 1.808-2.428.853 0 1.267.641 1.267 1.408 0 .858-.546 2.141-.828 3.329-.236.995.499 1.806 1.476 1.806 1.772 0 3.137-1.868 3.137-4.561 0-2.386-1.715-4.054-4.163-4.054-2.836 0-4.498 2.127-4.498 4.326 0 .856.33 1.775.741 2.276a.3.3 0 0 1 .069.286c-.076.313-.244.995-.277 1.134-.044.183-.146.222-.337.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.966-.527-2.292-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+                        Pinterest
+                      </li>
+                      <li class="rv-platform-opt" role="option" data-value="LinkedIn" aria-selected="false">
+                        <svg class="rv-opt-icon rv-opt-icon--li" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        LinkedIn
+                      </li>
+                      <li class="rv-platform-opt" role="option" data-value="X" aria-selected="false">
+                        <svg class="rv-opt-icon rv-opt-icon--x" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        X (Twitter)
+                      </li>
+                      <li class="rv-platform-opt" role="option" data-value="Website" aria-selected="false">
+                        <svg class="rv-opt-icon rv-opt-icon--web" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Website
+                      </li>
+                      <li class="rv-platform-opt rv-platform-opt--divider" role="option" data-value="Other" aria-selected="false">
+                        <svg class="rv-opt-icon rv-opt-icon--other" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Other
                       </li>
                     </ul>
                   </div>
+
+                  <!-- Other: Platform Name field (animated, shown only for Other) -->
+                  <div class="rv-other-fields" id="rvOtherFields">
+                    <div>
+                      <input
+                        type="text"
+                        id="rvOtherPlatformName"
+                        name="rvOtherPlatformName"
+                        placeholder="Platform Name (Example: Snapchat)"
+                        class="rv-handle-input"
+                        autocomplete="off"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Username field â€” always visible -->
                   <input
                     type="text"
                     id="rvSocialHandle"
                     name="rvSocialHandle"
-                    placeholder="@username or channel name"
+                    placeholder="@username"
                     class="rv-handle-input"
                     autocomplete="off"
                   />
@@ -2544,78 +2489,105 @@
     <!-- ── Reviews: custom platform dropdown ── -->
     <script>
       (function () {
-        var drop = document.getElementById("rvPlatformDrop");
-        var trigger = document.getElementById("rvPlatformTrigger");
-        var select = document.getElementById("rvSocialPlatform");
+        var drop    = document.getElementById('rvPlatformDrop');
+        var trigger = document.getElementById('rvPlatformTrigger');
+        var select  = document.getElementById('rvSocialPlatform');
+        var handle  = document.getElementById('rvSocialHandle');
+        var otherFields       = document.getElementById('rvOtherFields');
+        var otherPlatformName = document.getElementById('rvOtherPlatformName');
+        var otherIconPreview  = document.getElementById('rvOtherIconPreview');
         if (!drop || !trigger || !select) return;
 
-        var icon = trigger.querySelector(".rv-platform-icon");
-        var label = trigger.querySelector(".rv-platform-label");
+        var iconEl  = trigger.querySelector('.rv-platform-icon');
+        var labelEl = trigger.querySelector('.rv-platform-label');
+
+        /* ── SVG library ─────────────────────────────── */
+        var GLOBE_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>';
 
         var ICONS = {
-          Instagram:
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>',
-          Facebook:
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
-          YouTube:
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>',
+          Instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>',
+          Facebook:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+          YouTube:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>',
+          Pinterest: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.236 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.181-.78 1.172-4.97 1.172-4.97s-.299-.598-.299-1.482c0-1.388.806-2.428 1.808-2.428.853 0 1.267.641 1.267 1.408 0 .858-.546 2.141-.828 3.329-.236.995.499 1.806 1.476 1.806 1.772 0 3.137-1.868 3.137-4.561 0-2.386-1.715-4.054-4.163-4.054-2.836 0-4.498 2.127-4.498 4.326 0 .856.33 1.775.741 2.276a.3.3 0 0 1 .069.286c-.076.313-.244.995-.277 1.134-.044.183-.146.222-.337.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.966-.527-2.292-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>',
+          LinkedIn:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>',
+          X:         '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
+          Website:   GLOBE_SVG,
+          Other:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>'
         };
 
-        function open() {
-          drop.classList.add("rv-platform-drop--open");
-          trigger.setAttribute("aria-expanded", "true");
-        }
-        function close() {
-          drop.classList.remove("rv-platform-drop--open");
-          trigger.setAttribute("aria-expanded", "false");
-        }
-        function isOpen() {
-          return drop.classList.contains("rv-platform-drop--open");
-        }
+        /* ── Placeholder map ─────────────────────────── */
+        var PLACEHOLDERS = {
+          Instagram: '@username',
+          Facebook:  'Profile / Page Name',
+          YouTube:   'Channel Name',
+          Pinterest: 'Username',
+          LinkedIn:  'Profile URL or Username',
+          X:         '@username',
+          Website:   'https://example.com',
+          Other:     'Username / Channel / Profile Link'
+        };
 
-        trigger.addEventListener("click", function (e) {
+        /* ── Open / close ────────────────────────────── */
+        function open()   { drop.classList.add('rv-platform-drop--open');    trigger.setAttribute('aria-expanded', 'true');  }
+        function close()  { drop.classList.remove('rv-platform-drop--open'); trigger.setAttribute('aria-expanded', 'false'); }
+        function isOpen() { return drop.classList.contains('rv-platform-drop--open'); }
+
+        trigger.addEventListener('click', function (e) {
           e.stopPropagation();
           isOpen() ? close() : open();
         });
 
-        drop.querySelectorAll(".rv-platform-opt").forEach(function (opt) {
-          opt.addEventListener("click", function () {
+        /* ── Option selection ────────────────────────── */
+        drop.querySelectorAll('.rv-platform-opt').forEach(function (opt) {
+          opt.addEventListener('click', function () {
             var val = opt.dataset.value;
-            /* update hidden select so reviews.js reads the right value */
+
+            /* sync hidden select */
             select.value = val;
-            /* update trigger visuals */
-            icon.innerHTML = ICONS[val] || "";
-            label.textContent = val;
-            icon.className =
-              "rv-platform-icon rv-platform-icon--" + val.toLowerCase();
-            /* mark selected */
-            drop.querySelectorAll(".rv-platform-opt").forEach(function (o) {
-              o.setAttribute("aria-selected", "false");
-              o.classList.remove("rv-platform-opt--active");
+
+            /* update trigger icon + label */
+            iconEl.innerHTML  = ICONS[val] || GLOBE_SVG;
+            labelEl.textContent = val === 'X' ? 'X (Twitter)' : val;
+            iconEl.className  = 'rv-platform-icon rv-platform-icon--' + val.toLowerCase();
+
+            /* update handle placeholder */
+            if (handle) handle.placeholder = PLACEHOLDERS[val] || '@username';
+
+            /* mark active option */
+            drop.querySelectorAll('.rv-platform-opt').forEach(function (o) {
+              o.setAttribute('aria-selected', 'false');
+              o.classList.remove('rv-platform-opt--active');
             });
-            opt.setAttribute("aria-selected", "true");
-            opt.classList.add("rv-platform-opt--active");
-            /* clear error styling that reviews.js may have set */
-            select.style.borderColor = "";
-            select.style.boxShadow = "";
+            opt.setAttribute('aria-selected', 'true');
+            opt.classList.add('rv-platform-opt--active');
+
+            /* show / hide Other fields */
+            if (otherFields) {
+              if (val === 'Other') {
+                otherFields.classList.add('rv-other-fields--visible');
+              } else {
+                otherFields.classList.remove('rv-other-fields--visible');
+                if (otherPlatformName) otherPlatformName.value = '';
+                if (otherIconPreview)  otherIconPreview.innerHTML = GLOBE_SVG;
+              }
+            }
+
+            /* clear error */
+            select.style.borderColor = '';
+            select.style.boxShadow   = '';
             close();
           });
         });
 
-        /* close on outside click */
-        document.addEventListener("click", function () {
-          close();
-        });
-        drop.addEventListener("click", function (e) {
-          e.stopPropagation();
-        });
+        
 
-        /* keyboard: Escape closes */
-        drop.addEventListener("keydown", function (e) {
-          if (e.key === "Escape") {
-            close();
-            trigger.focus();
-          }
+        /* ── Close on outside click ──────────────────── */
+        document.addEventListener('click', close);
+        drop.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        /* ── Keyboard: Escape closes ─────────────────── */
+        drop.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') { close(); trigger.focus(); }
         });
       })();
     </script>

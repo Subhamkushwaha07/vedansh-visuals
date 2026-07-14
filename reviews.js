@@ -18,9 +18,10 @@
   const rvLoader    = document.getElementById('rvLoader');
   const rvFormAvatar    = document.getElementById('rvFormAvatar');
   const rvStarHint      = document.getElementById('rvStarHint');
-  const rvSocialPlatform= document.getElementById('rvSocialPlatform');
-  const rvSocialHandle  = document.getElementById('rvSocialHandle');
-  const stars           = document.querySelectorAll('.rv-star');
+  const rvSocialPlatform    = document.getElementById('rvSocialPlatform');
+  const rvSocialHandle      = document.getElementById('rvSocialHandle');
+  const rvOtherPlatformName = document.getElementById('rvOtherPlatformName');
+  const stars               = document.querySelectorAll('.rv-star');
 
   const STAR_HINTS = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
 
@@ -92,7 +93,9 @@
       const email          = rvEmail          ? rvEmail.value.trim()          : '';
       const location       = rvLocation       ? rvLocation.value.trim()       : '';
       const msg            = rvMsg            ? rvMsg.value.trim()            : '';
-      const socialPlatform = rvSocialPlatform ? rvSocialPlatform.value        : '';
+      const rawPlatform    = rvSocialPlatform ? rvSocialPlatform.value        : '';
+      const otherName      = rvOtherPlatformName ? rvOtherPlatformName.value.trim() : '';
+      const socialPlatform = rawPlatform === 'Other' && otherName ? otherName : rawPlatform;
       const socialHandle   = rvSocialHandle   ? rvSocialHandle.value.trim()   : '';
 
       let valid = true;
@@ -125,7 +128,10 @@
         if (rvName) rvName.value = '';
         if (rvEmail) rvEmail.value = '';
         if (rvSocialPlatform) rvSocialPlatform.value = '';
-        if (rvSocialHandle)   rvSocialHandle.value   = '';
+        if (rvSocialHandle)       rvSocialHandle.value       = '';
+        if (rvOtherPlatformName)  rvOtherPlatformName.value  = '';
+        const otherFields = document.getElementById('rvOtherFields');
+        if (otherFields) otherFields.classList.remove('rv-other-fields--visible');
         selectedRating = 0;
         stars.forEach(s => { s.classList.remove('selected', 'hovered'); s.setAttribute('aria-pressed', 'false'); });
         if (rvStarHint) rvStarHint.textContent = 'Tap to rate';
@@ -245,18 +251,66 @@
 
     if (data.socialPlatform && data.socialHandle) {
       const PLATFORM_META = {
-        Instagram: { icon: '\uD83D\uDCF7', buildUrl: h => 'https://instagram.com/' + h.replace(/^@/, '') },
-        Facebook:  { icon: '\uD83D\uDCD8', buildUrl: h => 'https://facebook.com/'  + h.replace(/^@/, '') },
-        YouTube:   { icon: '\u25B6\uFE0F', buildUrl: h => 'https://youtube.com/@'  + h.replace(/^@/, '') }
+        Instagram: {
+          buildUrl: h => 'https://instagram.com/' + h.replace(/^@/, ''),
+          svgClass: 'rv-soc-ig',
+          svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>'
+        },
+        Facebook: {
+          buildUrl: h => 'https://facebook.com/' + h.replace(/^@/, ''),
+          svgClass: 'rv-soc-fb',
+          svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>'
+        },
+        YouTube: {
+          buildUrl: h => 'https://youtube.com/@' + h.replace(/^@/, ''),
+          svgClass: 'rv-soc-yt',
+          svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>'
+        },
+        Pinterest: {
+          buildUrl: h => 'https://pinterest.com/' + h.replace(/^@/, ''),
+          svgClass: 'rv-soc-pt',
+          svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.236 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.181-.78 1.172-4.97 1.172-4.97s-.299-.598-.299-1.482c0-1.388.806-2.428 1.808-2.428.853 0 1.267.641 1.267 1.408 0 .858-.546 2.141-.828 3.329-.236.995.499 1.806 1.476 1.806 1.772 0 3.137-1.868 3.137-4.561 0-2.386-1.715-4.054-4.163-4.054-2.836 0-4.498 2.127-4.498 4.326 0 .856.33 1.775.741 2.276a.3.3 0 0 1 .069.286c-.076.313-.244.995-.277 1.134-.044.183-.146.222-.337.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.966-.527-2.292-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>'
+        },
+        LinkedIn: {
+          buildUrl: h => h.startsWith('http') ? h : 'https://linkedin.com/in/' + h.replace(/^@/, ''),
+          svgClass: 'rv-soc-li',
+          svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>'
+        },
+        X: {
+          buildUrl: h => 'https://x.com/' + h.replace(/^@/, ''),
+          svgClass: 'rv-soc-x',
+          svg: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'
+        },
+        Website: {
+          buildUrl: h => h.startsWith('http') ? h : 'https://' + h,
+          svgClass: 'rv-soc-web',
+          svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
+        },
+        Other: {
+          buildUrl: h => h.startsWith('http') ? h : '#',
+          svgClass: 'rv-soc-other',
+          svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
+        }
       };
       const pm = PLATFORM_META[data.socialPlatform];
       if (pm) {
         const socLink = document.createElement('a');
-        socLink.className  = 'rv-card-social';
-        socLink.href       = pm.buildUrl(data.socialHandle);
-        socLink.target     = '_blank';
-        socLink.rel        = 'noopener noreferrer';
-        socLink.textContent = pm.icon + ' ' + data.socialPlatform + ': ' + escapeHtml(data.socialHandle);
+        socLink.className = 'rv-card-social';
+        socLink.href      = pm.buildUrl(data.socialHandle);
+        socLink.target    = '_blank';
+        socLink.rel       = 'noopener noreferrer';
+        socLink.setAttribute('aria-label', data.socialPlatform + ': ' + data.socialHandle);
+
+        const iconWrap = document.createElement('span');
+        iconWrap.className = 'rv-card-social-icon ' + pm.svgClass;
+        iconWrap.innerHTML = pm.svg;
+
+        const handleEl = document.createElement('span');
+        handleEl.className = 'rv-card-social-handle';
+        handleEl.textContent = escapeHtml(data.socialHandle);
+
+        socLink.appendChild(iconWrap);
+        socLink.appendChild(handleEl);
         meta.appendChild(socLink);
       }
     }
