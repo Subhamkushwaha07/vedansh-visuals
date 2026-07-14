@@ -59,9 +59,9 @@ navLinksList.querySelectorAll('a').forEach(link => {
   toggle.addEventListener('click', function () {
     var isOpen = sub.classList.toggle('open');
     toggle.setAttribute('aria-expanded', isOpen);
-    /* arrow is now a sibling of the button */
-    var arrow = toggle.nextElementSibling;
-    if (arrow && arrow.classList.contains('nav-portfolio-arrow')) {
+    /* arrow is inside the toggle link */
+    var arrow = toggle.querySelector('.nav-portfolio-arrow');
+    if (arrow) {
       arrow.style.transform = isOpen ? 'rotate(90deg)' : 'none';
     }
   });
@@ -79,8 +79,8 @@ navLinksList.querySelectorAll('a').forEach(link => {
       /* Reset arrow */
       sub.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
-      var arrow = toggle.nextElementSibling;
-      if (arrow && arrow.classList.contains('nav-portfolio-arrow')) {
+      var arrow = toggle.querySelector('.nav-portfolio-arrow');
+      if (arrow) {
         arrow.style.transform = 'none';
       }
 

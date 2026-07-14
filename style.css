@@ -509,6 +509,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .hsoc--yt:hover svg { color: var(--gold); }
 
+/* Pinterest — same hover as other social pills */
+.hsoc--pt:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,.08);
+  color: var(--gold-lt);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow:
+    0 8px 24px rgba(201,168,76,.22),
+    0 0 0 1px rgba(201,168,76,.18),
+    0 0 32px rgba(201,168,76,.10);
+}
+.hsoc--pt:hover svg { color: var(--gold); }
+
 /* Scroll-down arrow */
 .scroll-down {
   position: absolute;
@@ -2787,7 +2800,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .about-img-wrap.about-visible:hover .about-img {
   animation-play-state: paused;
   filter: grayscale(0%);
-  transform: scale(1.012);
+  /* scale applied via parent wrapper hover to avoid transform conflict with float */
 }
 
 /* ---- Golden shine sweep on the Explore Services button ---- */

@@ -156,6 +156,11 @@
 }
 .rv-star.hovered  { transform: scale(1.2); }
 .rv-star.selected { transform: scale(1.1); }
+.rv-star:focus-visible {
+  outline: 2px solid rgba(201,168,76,.7);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
 .rv-star-hint {
   font-size: 0.7rem;
@@ -266,6 +271,13 @@
 .rv-platform-icon--x         { color: #f4f4f0; }
 .rv-platform-icon--website   { color: #c9a84c; }
 .rv-platform-icon--other     { color: rgba(244,244,240,.45); }
+.rv-platform-label {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .rv-platform-chevron {
   width: 13px;
   height: 13px;
